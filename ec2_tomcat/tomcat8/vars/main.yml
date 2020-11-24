@@ -1,0 +1,8 @@
+---
+tomcat_dir: /opt/tomcat
+remote-user: ec2-user
+tomcat_major_version: tomcat-8
+tomcat_full_version: 8.5.60
+tomcat_port: 9090
+tomcat_start: /opt/tomcat/apache-tomcat-8.5.60/bin/startup.sh
+tomcat_home: /opt/tomcat/apache-tomcat-8.5.60/

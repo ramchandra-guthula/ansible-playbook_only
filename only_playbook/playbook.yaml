@@ -1,0 +1,40 @@
+---
+- hosts: all
+  remote_user: ec2-user
+  #become_user: ec2-user
+  become_method: sudo
+  become: yes
+  vars:
+    http_port: 8080
+    dir_path: /home/ec2-user/web_server
+    local_file_path: /home/ec2-user/ansible/httpd.conf
+    dest_file_path: /etc/httpd/conf/httpd.conf
+  
+  tasks:
+  - name: create a directory
+    file:
+      path: "{{ dir_path  }}"
+      owner: ec2-user
+      group: ec2-user
+      mode: '0755'
+      state: directory
+  
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: latest
+ 
+  - name: update httpd.conf
+    template:
+      src: "{{ local_file_path }}"
+      dest: "{{ dest_file_path }}"
+      mode: 0755
+    notify:
+     - restart apache 
+
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+

@@ -1,0 +1,61 @@
+---
+- name: Security group for jenkins app
+  amazon.aws.ec2_group:
+    name: jenkins_SG
+    description:  jenkins_SG
+    vpc_id: "{{ jenkins_vpc_id }}"
+    region: ap-south-1
+    rules:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 8080
+        to_port: 8080
+        cidr_ip: 0.0.0.0/0
+  register: sg_out
+  
+
+- debug:
+    #var: __jenkinsSG
+    msg: "securtiy groupID is : {{ sg_out['group_id'] }}"
+
+- name: Creating EC2 Instance for Jenkins
+  amazon.aws.ec2:
+    key_name: devops-day3
+    region: ap-south-1
+    group_id: "{{ sg_out['group_id'] }}"
+    instance_type: t2.micro
+    image: "{{ AMI_ID }}"
+    wait: yes
+    wait_timeout: 200
+    exact_count: 1
+    count_tag:
+       Name: jenkins_server
+    vpc_subnet_id: "{{ subnet_id }}"
+    assign_public_ip: yes
+    instance_tags:
+        Name: jenkins_server
+  register: ec2_out
+  
+
+- debug:
+    msg: "{{ ec2_out['tagged_instances'][0]['public_ip'] }}"
+
+- set_fact:
+    jenkins_instanceIP: "{{ ec2_out['instances'][0]['public_ip'] }}"
+  when: ec2_out is changed
+
+- set_fact:
+    jenkins_instanceIP: "{{  ec2_out['tagged_instances'][0]['public_ip']  }}"
+  when: ec2_out is not changed
+
+- name: adding host to Jenkins_group
+  add_host:
+    name: "{{ jenkins_instanceIP }}"
+    groups: jenkins_instance

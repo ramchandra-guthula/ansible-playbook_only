@@ -1,0 +1,45 @@
+---
+- name: Create /opt/tomcat directory
+  file:
+    path: /opt/tomcat
+    owner: ec2-user
+    group: ec2-user
+    mode: 0755
+    state: directory
+
+- name: Get tomcat8.tar from internet
+  unarchive:
+    src: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz
+    dest: /opt/tomcat/
+    remote_src: True
+
+- name: Install java
+  yum:
+    name: java
+    state: latest
+
+- name: Copy tomcat systemd  file
+  template:
+    src: tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+
+- name: Reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: Enable tomcat service
+  systemd:
+    enabled: yes
+    name: tomcat.service
+ 
+
+- name: Deploy jenkins
+  get_url:
+    url: https://get.jenkins.io/war-stable/2.249.3/jenkins.war
+    dest: "{{ tomcat_home }}/webapps/"
+    mode: '0755'
+
+- name: Start tomcat
+  systemd:
+    state: started
+    name: tomcat.service
