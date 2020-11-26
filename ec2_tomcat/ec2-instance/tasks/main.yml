@@ -55,6 +55,12 @@
     jenkins_instanceIP: "{{  ec2_out['tagged_instances'][0]['public_ip']  }}"
   when: ec2_out is not changed
 
+- name: Wait for SSH to come up
+  delegate_to: "{{ jenkins_instanceIP }}"
+  wait_for_connection:
+    delay: 60
+    timeout: 180
+
 - name: adding host to Jenkins_group
   add_host:
     name: "{{ jenkins_instanceIP }}"
