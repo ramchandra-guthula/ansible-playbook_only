@@ -1,21 +1,23 @@
 ---
-- name: Installing tomcat
-  #hosts: all
-  hosts: localhost
-  #connection: local
-  remote_user: ec2-user
-  become_method: sudo
-  become: yes
+#- name: Installing tomcat
+#  #hosts: all
+#  hosts: localhost
+#  #connection: local
+#  remote_user: ec2-user
+#  become_method: sudo
+#  become: yes
+#
+#  roles:
+#    - ec2-instance
 
-  roles:
-    - ec2-instance
-
 - name: Installing tomcat
-  #hosts: all
-  hosts: jenkins_instance
+  hosts: all
+  #hosts: jenkins_instance
   remote_user: ec2-user
-  become_method: sudo
+  #become_method: sudo
   become: yes
+  vars_files:
+    - group_vars/prod_vars.yml
 
   roles:
     - tomcat8
