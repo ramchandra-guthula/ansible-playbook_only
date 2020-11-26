@@ -17,6 +17,8 @@
   yum:
     name: java
     state: latest
+  tags:
+    - sample_tag
 
 - name: Copy tomcat systemd  file
   template:
@@ -33,13 +35,15 @@
     name: tomcat.service
  
 
-- name: Deploy jenkins
-  get_url:
-    url: https://get.jenkins.io/war-stable/2.249.3/jenkins.war
-    dest: "{{ tomcat_home }}/webapps/"
-    mode: '0755'
+#- name: Deploy jenkins
+#  get_url:
+#    url: https://get.jenkins.io/war-stable/2.249.3/jenkins.war
+#    dest: "{{ tomcat_home }}/webapps/"
+#    mode: '0755'
 
-- name: Start tomcat
-  systemd:
-    state: started
-    name: tomcat.service
+#- name: Start tomcat
+#  systemd:
+#    state: started
+#    name: tomcat.service
+#  tags:
+#    - sample_tag
