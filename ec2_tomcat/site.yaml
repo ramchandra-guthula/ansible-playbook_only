@@ -21,3 +21,4 @@
 
   roles:
     - tomcat8
+    - war-deploy
