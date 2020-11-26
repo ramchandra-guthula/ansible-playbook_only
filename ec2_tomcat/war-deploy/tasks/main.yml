@@ -7,7 +7,7 @@
     username: ram
     password: "{{ jenkins_token }}"
     force_basic_auth: yes
-	
+    
 - name: Start tomcat
   systemd:
     state: started
