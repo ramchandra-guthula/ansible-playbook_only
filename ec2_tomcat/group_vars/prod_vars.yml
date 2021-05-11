@@ -7,3 +7,6 @@ tomcat_full_version: 8.5.60
 tomcat_port: 9090
 tomcat_start: /opt/tomcat/apache-tomcat-8.5.60/bin/startup.sh
 tomcat_home: /opt/tomcat/apache-tomcat-8.5.60/
+jenkins_instance: "13.234.21.143"
+jenkins_port: 8080
+job_name: "project"
