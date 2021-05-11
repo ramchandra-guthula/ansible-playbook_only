@@ -10,4 +10,4 @@ tomcat_home: /opt/tomcat/apache-tomcat-8.5.60/
 jenkins_instance: "13.234.21.143"
 jenkins_port: 8080
 job_name: "project"
-key_name: "devops_training"
+key_pair: "devops_training"
