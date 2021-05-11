@@ -20,7 +20,6 @@
         cidr_ip: 0.0.0.0/0
   register: sg_out
   
-
 - debug:
     #var: __jenkinsSG
     msg: "securtiy groupID is : {{ sg_out['group_id'] }}"
@@ -43,7 +42,6 @@
         Name: jenkins_server
   register: ec2_out
   
-
 - debug:
     msg: "{{ ec2_out['tagged_instances'][0]['public_ip'] }}"
 
