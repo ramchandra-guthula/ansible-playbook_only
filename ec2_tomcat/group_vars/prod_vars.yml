@@ -1,5 +1,5 @@
 ---
-jenkins_token: 11f260fdaf1eafb063db9093118b065fc2
+jenkins_token: 11cece34beb897768c0488295b70b8a662
 tomcat_dir: /opt/tomcat
 remote-user: ec2-user
 tomcat_major_version: tomcat-8
