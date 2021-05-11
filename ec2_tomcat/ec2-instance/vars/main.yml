@@ -1,4 +1,4 @@
 ---
-jenkins_vpc_id: vpc-828894ea
-subnet_id: subnet-23ede84b
-AMI_ID: ami-0e306788ff2473ccb
+jenkins_vpc_id: vpc-0c97bd8cc3198ec77
+subnet_id: subnet-0db3962d4ca939647
+AMI_ID: ami-0bcf5425cdc1d8a85
