@@ -4,7 +4,7 @@
   get_url:
     url: http://{{ jenkins_instance }}:{{ jenkins_port }}/jenkins/job/{{ job_name }}/lastSuccessfulBuild/execution/node/3/ws/target/hello-1.0.war
     dest: "{{ tomcat_home }}/webapps/"
-    username: ram
+    username: "{{ jenkins_username }}"
     password: "{{ jenkins_token }}"
     force_basic_auth: yes
     
