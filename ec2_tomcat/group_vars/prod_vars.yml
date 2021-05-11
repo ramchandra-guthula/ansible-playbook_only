@@ -9,6 +9,7 @@ tomcat_start: /opt/tomcat/apache-tomcat-8.5.60/bin/startup.sh
 tomcat_home: /opt/tomcat/apache-tomcat-8.5.60/
 jenkins_instance: "13.234.21.143"
 jenkins_port: 8080
+jenkins_username: devops
 job_name: "project"
 private_key: "devops_training"
 tomcat_download_link: https://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.65/bin/apache-tomcat-8.5.65.tar.gz
