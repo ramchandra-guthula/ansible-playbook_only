@@ -27,7 +27,7 @@
 
 - name: Creating EC2 Instance for Jenkins
   amazon.aws.ec2:
-    key_name: devops-day3
+    key_name: "{{ key-pair }}"
     region: ap-south-1
     group_id: "{{ sg_out['group_id'] }}"
     instance_type: t2.micro
