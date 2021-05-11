@@ -1,7 +1,7 @@
 ---
-- name: Security group for jenkins app
+- name: Security group for EC2
   amazon.aws.ec2_group:
-    name: jenkins_SG
+    name: app_SG
     description:  jenkins_SG
     vpc_id: "{{ jenkins_vpc_id }}"
     region: ap-south-1
@@ -24,9 +24,9 @@
     #var: __jenkinsSG
     msg: "securtiy groupID is : {{ sg_out['group_id'] }}"
 
-- name: Creating EC2 Instance for Jenkins
+- name: Creating EC2 Instance for deploying App
   amazon.aws.ec2:
-    key_name: "{{ private_key }}"
+    key_name: devops_training
     region: ap-south-1
     group_id: "{{ sg_out['group_id'] }}"
     instance_type: t2.micro
