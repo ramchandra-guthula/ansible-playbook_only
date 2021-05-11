@@ -9,7 +9,7 @@
 
 - name: Get tomcat8.tar from internet
   unarchive:
-    src: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz
+    src: "{{ tomcat_download_link }}"
     dest: /opt/tomcat/
     remote_src: True
 
