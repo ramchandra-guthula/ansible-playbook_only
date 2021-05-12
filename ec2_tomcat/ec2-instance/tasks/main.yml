@@ -53,11 +53,11 @@
     jenkins_instanceIP: "{{  ec2_out['tagged_instances'][0]['public_ip']  }}"
   when: ec2_out is not changed
 
- - name: wait for SSH to come up
-   wait_for:
-     host: "{{ jenkins_instanceIP }}"
-     port: 22
-     state: started
+- name: wait for SSH to come up
+  wait_for:
+    host: "{{ jenkins_instanceIP }}"
+    port: 22
+    state: started
 
 - name: adding host to Jenkins_group
   add_host:
