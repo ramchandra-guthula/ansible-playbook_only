@@ -1,23 +1,18 @@
-[prod:children]
-prod_web
-prod_app
-prod_db
+[hr_app_dev:children]
+job_posting
 
-[prod_web]
-#Web_server ansible_host=13.233.255.233
-13.233.255.233
+[hr_app_dev:vars]
+http_port="9000"
 
-[prod_app]
-#app_server ansible_host=13.234.119.124
-13.234.119.124
-
-[prod_db]
-13.233.255.233
+[job_posting]
+hr_server ansible_host=15.206.70.205 anisble_connection=ssh ansible_user=ec2-user
 
 
+[hr_app_uat:children]
+recruitment
 
-[uat]
-13.233.255.233
+[hr_app_uat:vars]
+http_port="8080"
 
-[dev]
-13.233.255.233
+[recruitment]
+finance_server ansible_host=13.233.147.228 anisble_connection=ssh ansible_user=ec2-user
