@@ -1,0 +1,5 @@
+---
+jenkins_vpc_id: vpc-89549de2
+subnet_id: subnet-692cda02
+AMI_ID: ami-0c6615d1e95c98aca
+private_key: mumbai

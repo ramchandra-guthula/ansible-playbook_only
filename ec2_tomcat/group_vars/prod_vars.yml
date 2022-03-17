@@ -1,15 +1,15 @@
 ---
-jenkins_token: 11cece34beb897768c0488295b70b8a662
+jenkins_token: 11db7a16abc952b9eec265078db73cb113
 tomcat_dir: /opt/tomcat
 remote-user: ec2-user
 tomcat_major_version: tomcat-8
 tomcat_full_version: 8.5.60
 tomcat_port: 9090
-tomcat_start: /opt/tomcat/apache-tomcat-8.5.65/bin/startup.sh
-tomcat_home: /opt/tomcat/apache-tomcat-8.5.65/
-jenkins_instance: "13.233.19.33"
+tomcat_start: /opt/tomcat/apache-tomcat-8.5.77/bin/startup.sh
+tomcat_home: /opt/tomcat/apache-tomcat-8.5.77
+jenkins_instance: "13.234.17.8"
 jenkins_port: 8080
 jenkins_username: devops
-job_name: "project"
-private_key: "devops_training"
-tomcat_download_link: https://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.65/bin/apache-tomcat-8.5.65.tar.gz
+job_name: "deploy_java_package"
+private_key: "mumbai"
+tomcat_download_link: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.77/bin/apache-tomcat-8.5.77.tar.gz

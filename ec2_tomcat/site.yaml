@@ -1,5 +1,5 @@
 ---
-- name: Installing tomcat
+- name: Creating EC2 instance
   #hosts: all
   hosts: localhost
   connection: local

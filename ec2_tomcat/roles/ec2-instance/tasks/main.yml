@@ -23,10 +23,11 @@
 - debug:
     #var: __jenkinsSG
     msg: "securtiy groupID is : {{ sg_out['group_id'] }}"
+      # var: sg_out
 
 - name: Creating EC2 Instance for deploying App
   amazon.aws.ec2:
-    key_name: devops_training
+    key_name: "{{ private_key  }}"
     region: ap-south-1
     group_id: "{{ sg_out['group_id'] }}"
     instance_type: t2.micro
@@ -44,7 +45,7 @@
   
 - debug:
     msg: "{{ ec2_out['tagged_instances'][0]['public_ip'] }}"
-
+      #var: ec2_out
 - set_fact:
     jenkins_instanceIP: "{{ ec2_out['instances'][0]['public_ip'] }}"
   when: ec2_out is changed
