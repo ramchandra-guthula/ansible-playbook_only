@@ -2,7 +2,7 @@
 
 - name: Download war file from Jenkins
   get_url:
-    url: http://{{ jenkins_instance }}:{{ jenkins_port }}/jenkins/job/{{ job_name }}/lastBuild/execution/node/3/ws/target/hello-1.0.war
+    url: http://{{ jenkins_instance }}:{{ jenkins_port }}/jenkins/job/{{ job_name }}/lastBuild/execution/node/3/ws/target/hello-2.0.war
     dest: "{{ tomcat_home }}/webapps/"
     username: "{{ jenkins_username }}"
     password: "{{ jenkins_token }}"
